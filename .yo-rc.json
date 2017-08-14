@@ -1,0 +1,49 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.hazlanrozaimi.qwikrest"
+    },
+    "jhipsterVersion": "4.5.1",
+    "baseName": "qwikrest",
+    "packageName": "com.hazlanrozaimi.qwikrest",
+    "packageFolder": "com/hazlanrozaimi/qwikrest",
+    "serverPort": "8080",
+    "authenticationType": "oauth2",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "clientFramework": "angular2",
+    "useSass": true,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-bootstrap-material-design",
+        "version": "3.5.1"
+      },
+      {
+        "name": "generator-jhipster-pace",
+        "version": "0.1.2"
+      },
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "2.5.0"
+      },
+      {
+        "name": "generator-jhipster-elasticsearch-reindexer",
+        "version": "0.3.0"
+      }
+    ],
+    "enableTranslation": false
+  }
+}
