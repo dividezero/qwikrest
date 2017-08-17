@@ -1,0 +1,31 @@
+entity Project {
+	name String required maxlength(20) pattern("/^\S*$/")
+    description String maxlength(255)
+}
+entity Artefact {
+	name String required maxlength(20) pattern("/^\S*$/")
+    description String maxlength(255)
+}
+entity ArtefactStructure {
+	name String required maxlength(20)
+    description String maxlength(255)
+    dataType String maxlength(20)
+    length Integer 
+    nullable Boolean
+}
+entity ArtefactData {
+	value String
+}
+
+// defining multiple OneToMany relationships with comments
+relationship ManyToOne {
+	Artefact{project required} to Project,
+	ArtefactStructure{artefact required} to Artefact,
+	ArtefactData{artefact required} to Artefact
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+// Set service options to all except few
+service all with serviceImpl

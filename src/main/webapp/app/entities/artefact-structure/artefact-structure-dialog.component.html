@@ -1,0 +1,89 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myArtefactStructureLabel">Create or edit a Artefact Structure</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!artefactStructure.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="artefactStructure.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="artefactStructure.name"
+            required maxlength="20" />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.maxlength">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="artefactStructure.description"
+            maxlength="255" />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.maxlength">
+                   This field cannot be longer than 255 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dataType">Data Type</label>
+            <input type="text" class="form-control" name="dataType" id="field_dataType"
+                [(ngModel)]="artefactStructure.dataType"
+            maxlength="20" />
+            <div [hidden]="!(editForm.controls.dataType?.dirty && editForm.controls.dataType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dataType?.errors?.maxlength">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_length">Length</label>
+            <input type="number" class="form-control" name="length" id="field_length"
+                [(ngModel)]="artefactStructure.length"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nullable">Nullable</label>
+            <input type="checkbox" class="form-control" name="nullable" id="field_nullable"
+                [(ngModel)]="artefactStructure.nullable"
+             />
+        </div>
+
+        <div class="form-group">
+            <label for="field_artefact">Artefact</label>
+            <select class="form-control" id="field_artefact" name="artefact" [(ngModel)]="artefactStructure.artefact"  required>
+                <option [ngValue]="artefactOption.id === artefactStructure.artefact?.id ? artefactStructure.artefact : artefactOption" *ngFor="let artefactOption of artefacts; trackBy: trackArtefactById">{{artefactOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.artefact?.dirty && editForm.controls.artefact?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.artefact?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

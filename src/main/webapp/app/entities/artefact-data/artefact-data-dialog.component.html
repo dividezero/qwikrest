@@ -1,0 +1,43 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myArtefactDataLabel">Create or edit a Artefact Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!artefactData.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="artefactData.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                [(ngModel)]="artefactData.value"
+             />
+        </div>
+
+        <div class="form-group">
+            <label for="field_artefact">Artefact</label>
+            <select class="form-control" id="field_artefact" name="artefact" [(ngModel)]="artefactData.artefact"  required>
+                <option [ngValue]="artefactOption.id === artefactData.artefact?.id ? artefactData.artefact : artefactOption" *ngFor="let artefactOption of artefacts; trackBy: trackArtefactById">{{artefactOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.artefact?.dirty && editForm.controls.artefact?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.artefact?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

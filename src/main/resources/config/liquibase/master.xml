@@ -5,6 +5,13 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094030_added_entity_Project.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094031_added_entity_Artefact.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094032_added_entity_ArtefactStructure.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094033_added_entity_ArtefactData.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170814094031_added_entity_constraints_Artefact.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094032_added_entity_constraints_ArtefactStructure.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170814094033_added_entity_constraints_ArtefactData.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
